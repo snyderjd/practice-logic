@@ -37,3 +37,58 @@ const coinsToCash = () => {
 }; 
 
 // console.log(coinsToCash);
+
+// ----------- CASH TO COINS -----------
+// Now do the reverse. Convert the dollar amount into the coins that make up that dollar amount. The final result is an object with the correct number of quarters, dimes, nickels, and pennies.
+
+const cashToCoins = (amount) => {
+    let piggyBank = {
+        quarters: 0,
+        dimes: 0,
+        nickels: 0,
+        pennies: 0
+    };
+
+    let numQuarters = Math.floor(amount / 0.25);
+    let remainder = amount % 0.25;
+    piggyBank["quarters"] = numQuarters;
+    
+    let numDimes = Math.floor(remainder / 0.10);
+    remainder = remainder % 0.10;
+    piggyBank["dimes"] = numDimes;
+
+    let numNickels = Math.floor(remainder / 0.05);
+    remainder = remainder % 0.05;
+    piggyBank["nickels"] = numNickels;
+
+    let numPennies = Math.floor(remainder / 0.01);
+    remainder = remainder % 0.01;
+    piggyBank["pennies"] = numPennies;
+
+    if ((numQuarters * 0.25) + (numDimes * 0.10) + (numNickels * 0.05) + (numPennies * 0.01) !== amount) {
+        piggyBank["pennies"] = numPennies + 1;
+    }
+
+    return piggyBank;
+};
+
+// console.log(cashToCoins(1.94));
+// console.log(cashToCoins(4.33));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
