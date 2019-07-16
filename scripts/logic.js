@@ -75,8 +75,45 @@ const cashToCoins = (amount) => {
 // console.log(cashToCoins(1.94));
 // console.log(cashToCoins(4.33));
 
+// ---------------- STUDENT GRADES ------------------
+// Loop over an array of student grades (values from 50-100) and keep track of how many students get each grade in an object named grades.
 
+// A score of 50 - 60 is an F
+// A score of 61 - 70 is a D
+// A score of 71 - 80 is a C
+// A score of 81 - 90 is a B
+// A score of 91 - 100 is an A
 
+const tallyGrades = (array) => {
+    const grades = {
+        A: 0,
+        B: 0,
+        C: 0,
+        D: 0,
+        F: 0
+    };
+
+    array.forEach(grade => {
+        if (grade <= 60) {
+            grades["F"] += 1;
+        } else if (grade <= 70) {
+            grades["D"] += 1;
+        } else if (grade <= 80) {
+            grades["C"] += 1;
+        } else if (grade <= 90) {
+            grades["B"] += 1;
+        } else {
+            grades["A"] += 1;
+        }
+
+    });
+
+    return grades;
+};
+
+const scores = [82, 71, 62, 95, 55, 98, 69, 72, 78, 84, 64, 58, 87, 60];
+
+console.log(tallyGrades(scores));
 
 
 
