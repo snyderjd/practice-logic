@@ -19,10 +19,21 @@ const piggyBank = {
 
 const coinsToCash = () => {
 
-    let dollarAmt = 0;
+    let dollarAmount = 0;
 
-    for (let key in piggyBank) {
+    Object.keys(piggyBank).forEach(key => {
+        if (key === "quarters") {
+            dollarAmount += (piggyBank[key] * 0.25);
+        } else if (key === "dimes") {
+            dollarAmount += (piggyBank[key] * 0.10);
+        } else if (key === "nickels") {
+            dollarAmount += (piggyBank[key] * 0.05);
+        } else {
+            dollarAmount += (piggyBank[key] * 0.01);
+        }
+    });
 
-        console.log(piggyBank[key]);
-    }
+    return dollarAmount;
 }; 
+
+// console.log(coinsToCash);
