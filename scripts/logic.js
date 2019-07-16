@@ -84,6 +84,14 @@ const cashToCoins = (amount) => {
 // A score of 81 - 90 is a B
 // A score of 91 - 100 is an A
 
+// Use console.info() to output the following criteria to the browser console.
+
+// How many of each grade ? Accomplish this with a for..in loop.
+// What is the lowest score ? Sort the array and find out.
+// What is the highest score ?
+// Which grade had the most students achieve it ? Use an if statment, and a currentGradeCount variable, in your for..in loop to see if the current grade's value is higher than the last one.
+// Which grade had the fewest students achieve it ?
+
 const tallyGrades = (array) => {
     const grades = {
         A: 0,
@@ -107,6 +115,40 @@ const tallyGrades = (array) => {
         }
 
     });
+
+    // Sort array and console.info min and max scores
+
+    let sortedGrades = array.sort();
+    console.info(`Lowest Grade: ${sortedGrades[0]}`);
+    console.info(`Highest Grade: ${sortedGrades[sortedGrades.length - 1]}`);
+
+    // Find most common grade and display in console
+
+    let mostCommon = '';
+    let numberMost = 0;
+
+    for (const key in grades) {
+        if (grades[key] > numberMost) {
+            mostCommon = key;
+            numberMost = grades[key];
+        }
+    }
+
+    console.info(`Most Common Grade: ${mostCommon}`);
+
+    // Find least common grade and desplay in console
+
+    let leastCommon = '';
+    let numberLeast = 1000000
+
+    for (const key in grades) {
+        if (grades[key] < numberLeast) {
+            leastCommon = key;
+            numberLeast = grades[key];
+        }
+    }
+
+    console.info(`Least Common Grade: ${leastCommon}`);
 
     return grades;
 };
