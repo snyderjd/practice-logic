@@ -50,15 +50,32 @@ const cashToCoins = (amount) => {
     };
 
     let numQuarters = Math.floor(amount / 0.25);
-    let remainder = amount - (numQuarters * 0.25)
-    console.log(numQuarters, remainder);
-    piggyBank[quarters] = numQuarters;
-    console.log(piggyBank);
+    let remainder = amount % 0.25;
+    piggyBank["quarters"] = numQuarters;
+    
+    let numDimes = Math.floor(remainder / 0.10);
+    remainder = remainder % 0.10;
+    piggyBank["dimes"] = numDimes;
+
+    let numNickels = Math.floor(remainder / 0.05);
+    remainder = remainder % 0.05;
+    piggyBank["nickels"] = numNickels;
+
+    let numPennies = Math.floor(remainder / 0.01);
+    remainder = remainder % 0.01;
+    piggyBank["pennies"] = numPennies;
+
+    if ((numQuarters * 0.25) + (numDimes * 0.10) + (numNickels * 0.05) + (numPennies * 0.01) !== amount) {
+        piggyBank["pennies"] = numPennies + 1;
+    }
 
     return piggyBank;
 };
 
-cashToCoins(1.94);
+// console.log(cashToCoins(1.94));
+// console.log(cashToCoins(4.33));
+
+
 
 
 
